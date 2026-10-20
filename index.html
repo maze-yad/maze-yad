@@ -85,7 +85,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--berry);outline-offs
 .tag{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .copy h2{font-size:clamp(36px,5.6vw,64px)}
 .copy p{font-size:18px;color:var(--muted);max-width:40ch}
-.on-light{--text:var(--pine-deep);--muted:color-mix(in srgb,var(--pine-deep) 78%,transparent)}
+.on-light{--text:var(--pine-deep);--muted:color-mix(in srgb,var(--pine-deep) 78%,transparent);color:var(--text)}
 @media (max-width:760px){
   .chapter .wrap{grid-template-columns:1fr;text-align:center;justify-items:center}
   .chapter.flip .art{order:0}
@@ -163,6 +163,9 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 @media (max-width:760px){.copy .why{margin-inline:auto}}
 .tile figcaption{line-height:1.45;padding-inline:4px}
 
+.tile .light-pic{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--pine) 14%,transparent)}
+.tile .logo-pic{background:#fbf6ec;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--pine) 14%,transparent)}
+.tile .logo-pic img{object-fit:contain;padding:12%}
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -259,17 +262,16 @@ body{margin:0}
       <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
-    <section class="chapter flip" style="--band:#c13f32">
-      <div class="wrap">
-        <div class="art" data-reveal="right"><img src="img/stork.jpg" alt="White stork in a Hawri scarf carrying a small gift in its beak" data-parallax></div>
+    <section class="chapter flip" style="--band:#f2e8d5">
+      <div class="wrap on-light">
+        <div class="art" data-reveal="right"><img src="img/oak.jpg" alt="Baru: oak leaves and two acorns tied with a red ribbon" data-parallax></div>
         <div class="copy" data-reveal="up">
-          <span class="tag">Special delivery</span>
-          <h2>The stork brings the gift home</h2>
-          <p>Balanced on one leg, Hawri scarf tied tight, holding one small present carefully for the right doorstep.</p>
-          <p class="why"><strong>Why we chose it</strong>Storks come back to Kurdistan every year and nest on rooftops close to people, so they have long felt like a sign of homecoming and good news. Making the stork our gift-bringer simply gives it the job it already has in our hearts.</p>
+          <span class="tag">From the mountain woods</span>
+          <h2>Baru, the oak and its acorns</h2>
+          <p>Three oak leaves and two acorns, tied together with a red Christmas ribbon like a small gift from the forest.</p>
+          <p class="why"><strong>Why we chose it</strong>Oak forests cover the mountains around us, and the baru has been gathered through the winters for generations. Tied with a Christmas bow, it brings the strength and patience of the oak into the season, rooted in this land and still giving.</p>
         </div>
       </div>
-    
       <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
@@ -307,17 +309,25 @@ body{margin:0}
       <div class="wall-head" data-reveal="up">
         <span class="tag" style="color:var(--berry)">Hang them on the tree</span>
         <h2>The ornament box</h2>
-        <p>Half of these come straight from a classic Christmas card, half from a winter in the Kurdish mountains. Mixed together they make one box of ornaments that belongs to both. Tap one to give it a jingle.</p>
+        <p>Every piece of the Christmas Nights identity in one box: the wreath, the wordmark and all fourteen illustrations. Half come straight from a classic Christmas card, half from a winter in the Kurdish mountains. Tap any one to give it a jingle.</p>
       </div>
       <div class="grid">
-        <figure class="tile" data-reveal="pop" style="--d:0s;--tilt:-3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the gift"><img src="img/gift.jpg" alt="Yellow gift box with a red ribbon" loading="lazy"></div><figcaption><b>The gift</b>The reason every child counts down the days.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.08s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the holly"><img src="img/holly.jpg" alt="Holly leaves with three red berries" loading="lazy"></div><figcaption><b>Holly</b>Green in winter and red with berries, the oldest colours of the season.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.16s;--tilt:-2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the snowman"><img src="img/snowman.jpg" alt="Snowman in a yellow hat and green scarf" loading="lazy"></div><figcaption><b>Snowman</b>The first thing anyone builds when snow settles on the hills.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.24s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the deer"><img src="img/deer.jpg" alt="Young spotted deer with small antlers" loading="lazy"></div><figcaption><b>The deer</b>Quiet and gentle, a nod to the reindeer from our own forests.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:0s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the tree"><img src="img/tree.jpg" alt="Christmas tree with baubles and a gold star" loading="lazy"></div><figcaption><b>The tree</b>Where the family gathers and the lights come on.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.08s;--tilt:-3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the oak sprig"><img src="img/oak.jpg" alt="Oak leaves and two acorns tied with a red bow" loading="lazy"></div><figcaption><b>Oak and acorns</b>The oak forests of our mountains, tied with a Christmas bow.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.16s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the Kulabal"><img src="img/vest.jpg" alt="Kulabal, a brown felt vest with black trim and pointed shoulders" loading="lazy"></div><figcaption><b>Kulabal</b>The traditional felt vest that kept generations warm through mountain winters.</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.24s;--tilt:-2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the stocking"><img src="img/stocking.jpg" alt="Red stocking with white paisley pattern" loading="lazy"></div><figcaption><b>Stocking</b>Patterned like the Hawri, so even the stocking speaks our language.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.00s;--tilt:-3deg"><div class="pic logo-pic" tabindex="0" role="button" aria-label="Jingle The wreath"><img src="img/logo.webp" alt="The Christmas Nights wreath logo, made of festive icons" loading="lazy"></div><figcaption><b>The wreath</b>Every symbol of the season, joined in one circle.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.08s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle Santa"><img src="img/santa.jpg" alt="Smiling Santa Claus with a red hat and white beard" loading="lazy"></div><figcaption><b>Santa</b>The universal welcome that opens the night.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.16s;--tilt:-2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the squirrel"><img src="img/squirrel.jpg" alt="Red squirrel in a Hawri scarf holding a red bauble" loading="lazy"></div><figcaption><b>The squirrel</b>Down from the oak woods, wearing the Hawri.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.24s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the horse"><img src="img/horse.jpg" alt="Chestnut horse with holly in its mane, a Hawri scarf and a brass bell" loading="lazy"></div><figcaption><b>The horse</b>The journey home, with a bell for the jingle.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.00s;--tilt:-3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the stork"><img src="img/stork.jpg" alt="White stork in a Hawri scarf carrying a small gift in its beak" loading="lazy"></div><figcaption><b>The stork</b>A homecoming bird carrying a small gift to the right doorstep.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.08s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the kew"><img src="img/kew.jpg" alt="Chukar partridge with striped flanks and a red beak" loading="lazy"></div><figcaption><b>The kew</b>The bird of our hills and our songs.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.16s;--tilt:-2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the tea"><img src="img/chai.jpg" alt="Steaming glass of red tea on a white saucer with a spoon" loading="lazy"></div><figcaption><b>Tea</b>The everyday hospitality at the heart of every visit.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.24s;--tilt:2deg"><div class="pic light-pic" tabindex="0" role="button" aria-label="Jingle the baru"><img src="img/oak.jpg" alt="Baru: oak leaves and two acorns tied with a red ribbon" loading="lazy"></div><figcaption><b>Baru</b>The oak and its acorns, rooted in this land and still giving.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.00s;--tilt:-3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the gift"><img src="img/gift.jpg" alt="Yellow gift box with a red ribbon" loading="lazy"></div><figcaption><b>The gift</b>The reason every child counts down the days.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.08s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the holly"><img src="img/holly.jpg" alt="Holly leaves with three red berries" loading="lazy"></div><figcaption><b>Holly</b>Green in winter and red with berries, the oldest colours of the season.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.16s;--tilt:-2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the snowman"><img src="img/snowman.jpg" alt="Snowman in a yellow hat and green scarf" loading="lazy"></div><figcaption><b>Snowman</b>The first thing anyone builds when snow settles on the hills.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.24s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the deer"><img src="img/deer.jpg" alt="Young spotted deer with small antlers" loading="lazy"></div><figcaption><b>The deer</b>Quiet and gentle, a nod to the reindeer from our own forests.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.00s;--tilt:-3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the tree"><img src="img/tree.jpg" alt="Christmas tree with baubles and a gold star" loading="lazy"></div><figcaption><b>The tree</b>Where the family gathers and the lights come on.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.08s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the Kulabal"><img src="img/vest.jpg" alt="Kulabal, a brown felt vest with black trim and pointed shoulders" loading="lazy"></div><figcaption><b>Kulabal</b>The traditional felt vest that kept generations warm through mountain winters.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.16s;--tilt:-2deg"><div class="pic light-pic" tabindex="0" role="button" aria-label="Jingle the stocking"><img src="img/stocking.jpg" alt="Red stocking with white paisley pattern" loading="lazy"></div><figcaption><b>Stocking</b>Patterned like the Hawri, so even the stocking speaks our language.</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:0.24s;--tilt:2deg"><div class="pic logo-pic" tabindex="0" role="button" aria-label="Jingle the wordmark"><img src="img/wordmark.webp" alt="Christmas Nights by Sulifest wordmark" loading="lazy"></div><figcaption><b>The wordmark</b>Sulifest's own identity, kept recognizable at the centre of it all.</figcaption></figure>
       </div>
     </div>
   
