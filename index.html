@@ -206,6 +206,21 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 .art-video video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:4px;background:#28533e}
 .replay{position:absolute;right:12px;bottom:12px;border:0;border-radius:999px;padding:9px 16px;background:color-mix(in srgb,var(--snow) 92%,transparent);color:var(--pine-deep);font:700 12px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .2s,background .2s}
 .replay:hover{background:var(--mustard);transform:translateY(-2px)}
+
+/* background music */
+.music{position:fixed;z-index:30;left:max(16px,calc(env(safe-area-inset-left,0px) + 16px));bottom:max(16px,calc(env(safe-area-inset-bottom,0px) + 16px));display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 18px 0 14px;border:0;border-radius:999px;background:var(--pine-deep);color:var(--snow);font:700 12px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;box-shadow:0 10px 24px -10px rgba(15,35,25,.6);transition:background .25s,transform .25s,padding .3s}
+.music:hover{background:var(--berry);transform:translateY(-2px)}
+.music .bars{display:inline-flex;align-items:flex-end;gap:3px;height:16px}
+.music .bars i{display:block;width:3px;height:5px;border-radius:2px;background:var(--mustard);transition:height .3s}
+.music.playing .bars i{animation:eq 1s ease-in-out infinite}
+.music.playing .bars i:nth-child(2){animation-delay:.2s}
+.music.playing .bars i:nth-child(3){animation-delay:.4s}
+.music.playing .bars i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:4px}50%{height:16px}}
+.music.compact{padding:0 14px}
+.music.compact .label{display:none}
+@media (prefers-reduced-motion:reduce){.music.playing .bars i{animation:none;height:12px}}
+
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -425,6 +440,12 @@ body{margin:0}
   <div class="wrap"><span>Christmas Nights by Sulifest</span><span><span id="year">Christmas 2026</span> · Branding by maze</span></div>
 </footer>
 
+<audio id="bgm" loop preload="none">
+  <source src="img/carols.ogg" type="audio/ogg">
+  <source src="img/carols.mp3" type="audio/mpeg">
+</audio>
+<button class="music" id="musicBtn" type="button" aria-pressed="false" aria-label="Play Christmas music"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="label">Play carols</span></button>
+
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Mockup photo" hidden><button class="x" type="button" aria-label="Close">×</button><figure style="margin:0"><img id="lbImg" alt=""><p id="lbCap"></p></figure></div>
 
 <script>
@@ -446,6 +467,34 @@ body{margin:0}
       vio.observe(sv);
     }
   }
+
+  // Background music: starts only when the visitor asks, fades in and out
+  var bgm=document.getElementById('bgm'), mb=document.getElementById('musicBtn'), fadeT=null;
+  function fadeTo(target, done){
+    clearInterval(fadeT);
+    fadeT=setInterval(function(){
+      var v=bgm.volume, step=0.04;
+      if (Math.abs(v-target)<=step) { bgm.volume=target; clearInterval(fadeT); if (done) done(); }
+      else bgm.volume = v + (target>v?step:-step);
+    }, 60);
+  }
+  function setUi(on){
+    mb.classList.toggle('playing', on); mb.setAttribute('aria-pressed', on?'true':'false');
+    mb.setAttribute('aria-label', on?'Pause Christmas music':'Play Christmas music');
+    mb.querySelector('.label').textContent = on ? 'Music on' : 'Play carols';
+  }
+  mb.addEventListener('click', function(){
+    if (bgm.paused) {
+      bgm.volume=0;
+      var pr=bgm.play();
+      if (pr && pr.then) pr.then(function(){ setUi(true); fadeTo(0.55); setTimeout(function(){ mb.classList.add('compact'); }, 2500); })
+                          .catch(function(){ setUi(false); });
+      else { setUi(true); fadeTo(0.55); }
+    } else {
+      fadeTo(0, function(){ bgm.pause(); }); setUi(false);
+    }
+  });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden && !bgm.paused) { bgm.pause(); bgm.dataset.resume='1'; } else if (!document.hidden && bgm.dataset.resume) { delete bgm.dataset.resume; bgm.play().catch(function(){}); } });
   // Mockup lightbox
   var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap'), lastBtn=null;
   function closeLb(){ lb.classList.remove('open'); setTimeout(function(){ lb.hidden=true; }, 300); if (lastBtn) lastBtn.focus(); }
