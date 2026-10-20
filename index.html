@@ -225,6 +225,30 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 .music.compact .label{display:none}
 @media (prefers-reduced-motion:reduce){.music.playing .bars i{animation:none;height:12px}}
 
+
+/* social templates */
+.social{position:relative;background:var(--snow)}
+.social > .wrap{padding-block:clamp(56px,8vw,110px)}
+.social-head{display:grid;gap:12px;text-align:center;margin-bottom:clamp(32px,5vw,56px)}
+.social-head .tag{color:var(--berry)}
+.social-head h2{font-size:clamp(34px,5vw,56px);color:var(--pine)}
+.social-head p{color:var(--ink-soft);max-width:50ch;margin-inline:auto}
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,36px);align-items:start}
+.post{margin:0;min-width:0;background:#fffdf8;border-radius:14px;overflow:hidden;box-shadow:0 22px 40px -26px rgba(27,63,47,.55),0 0 0 1px color-mix(in srgb,var(--pine) 10%,transparent);transform:rotate(var(--rot,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.post:hover{transform:rotate(0) translateY(-6px);box-shadow:0 30px 50px -26px rgba(27,63,47,.6),0 0 0 1px color-mix(in srgb,var(--pine) 10%,transparent)}
+.post-top{display:flex;align-items:center;gap:10px;padding:10px 12px}
+.post-top img{width:32px;height:32px;border-radius:50%;background:var(--snow);object-fit:contain;padding:2px;box-shadow:0 0 0 2px var(--berry)}
+.post-top span{font-size:13px;font-weight:700;color:var(--ink);line-height:1.2}
+.post-top small{display:block;font-weight:500;color:var(--ink-soft);font-size:11px}
+.post button{all:unset;display:block;width:100%;cursor:zoom-in}
+.post button:focus-visible{outline:3px solid var(--berry);outline-offset:-3px}
+.post button img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.post figcaption{padding:12px 14px 14px;display:grid;gap:2px}
+.post figcaption b{font-family:var(--f-display);font-weight:400;font-size:19px;color:var(--pine)}
+.post figcaption span{font-size:13px;color:var(--ink-soft)}
+.social .tm{color:var(--ink)}
+@media (max-width:820px){.posts{grid-template-columns:minmax(0,420px);justify-content:center}.post{--rot:0deg!important}}
+
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -251,6 +275,7 @@ body{margin:0}
       <a href="#friends">Friends</a>
       <a href="#ornaments">Ornaments</a>
       <a href="#mockups">Mockups</a>
+      <a href="#social">Social</a>
       <a href="#greetings">Greetings</a>
     </nav>
     <span class="count" id="count" aria-live="polite">65 days to Christmas</span>
@@ -422,6 +447,34 @@ body{margin:0}
     <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
   </section>
 
+  <section class="social" id="social">
+    <div class="wrap">
+      <div class="social-head" data-reveal="up">
+        <span class="tag">Social media templates</span>
+        <h2>Ready for the feed</h2>
+        <p>Three post layouts built from the same pieces: real photos from the nights, framed by the illustrations and the logo. Swap the photo, keep the frame, and every post is instantly Christmas Nights.</p>
+      </div>
+      <div class="posts">
+        <figure class="post" data-reveal="up" style="--d:0.00s;--rot:-2deg">
+          <div class="post-top"><img src="img/logo.webp" alt=""><span>Christmas Nights<small>by Sulifest</small></span></div>
+          <button type="button" aria-label="View larger: Icon strip"><img src="img/social-1.webp" alt="Night market photo with the wreath logo at the top and a strip of the fourteen illustrations along the bottom" loading="lazy"></button>
+          <figcaption><b>Icon strip</b><span>The photo leads, the icons sign it off.</span></figcaption>
+        </figure>
+        <figure class="post" data-reveal="up" style="--d:0.12s;--rot:0deg">
+          <div class="post-top"><img src="img/logo.webp" alt=""><span>Christmas Nights<small>by Sulifest</small></span></div>
+          <button type="button" aria-label="View larger: Icon column"><img src="img/social-2.webp" alt="Night market photo with a column of illustrations down the right edge and the wordmark bottom left" loading="lazy"></button>
+          <figcaption><b>Icon column</b><span>A ribbon of icons down the side, the wordmark in the corner.</span></figcaption>
+        </figure>
+        <figure class="post" data-reveal="up" style="--d:0.24s;--rot:2deg">
+          <div class="post-top"><img src="img/logo.webp" alt=""><span>Christmas Nights<small>by Sulifest</small></span></div>
+          <button type="button" aria-label="View larger: Characters"><img src="img/social-3.webp" alt="Night market photo with a green wave at the bottom, the deer and squirrel illustrations and the wordmark" loading="lazy"></button>
+          <figcaption><b>Characters</b><span>The deer and the squirrel step into the scene.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+    <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
+  </section>
+
   <section class="close" id="greetings">
     <div class="wrap">
       <div class="close-logo" data-reveal="pop" style="--tilt:-8deg">
@@ -505,9 +558,9 @@ body{margin:0}
   // Mockup lightbox
   var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap'), lastBtn=null;
   function closeLb(){ lb.classList.remove('open'); setTimeout(function(){ lb.hidden=true; }, 300); if (lastBtn) lastBtn.focus(); }
-  document.querySelectorAll('.mock button').forEach(function(b){
+  document.querySelectorAll('.mock button, .post button').forEach(function(b){
     b.addEventListener('click', function(){
-      var img=b.querySelector('img'), fig=b.parentElement;
+      var img=b.querySelector('img'), fig=b.closest('figure');
       lbImg.src=img.src; lbImg.alt=img.alt; lbCap.textContent=fig.querySelector('b').textContent+' · '+fig.querySelector('figcaption span').textContent;
       lastBtn=b; lb.hidden=false; requestAnimationFrame(function(){ lb.classList.add('open'); }); lb.querySelector('.x').focus();
     });
