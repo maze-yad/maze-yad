@@ -199,6 +199,10 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 .lightbox p{color:var(--snow);text-align:center;margin-top:12px;font-size:15px}
 .lightbox .x{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--snow);color:var(--pine-deep);font-size:22px;line-height:1;cursor:pointer}
 
+.art-video{position:relative}
+.art-video video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:4px;background:#28533e}
+.replay{position:absolute;right:12px;bottom:12px;border:0;border-radius:999px;padding:9px 16px;background:color-mix(in srgb,var(--snow) 92%,transparent);color:var(--pine-deep);font:700 12px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .2s,background .2s}
+.replay:hover{background:var(--mustard);transform:translateY(-2px)}
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -268,13 +272,19 @@ body{margin:0}
       <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
-    <section class="chapter flip" style="--band:#295542">
+    <section class="chapter flip squirrel-band" style="--band:#28533e">
       <div class="wrap">
-        <div class="art" data-reveal="right"><img src="img/squirrel.jpg" alt="Red squirrel in a black Hawri scarf holding a red bauble" data-parallax></div>
+        <div class="art art-video" data-reveal="right">
+          <video id="squirrelVid" muted playsinline preload="metadata" poster="img/squirrel-poster.webp" aria-label="The squirrel in her Hawri scarf walks in, drops her red bauble, picks it up and smiles">
+            <source src="img/squirrel.mp4" type="video/mp4">
+            <source src="img/squirrel.webm" type="video/webm">
+          </video>
+          <button class="replay" id="squirrelReplay" type="button" hidden>↻ Watch her again</button>
+        </div>
         <div class="copy" data-reveal="up">
           <span class="tag">From the oak woods</span>
           <h2>A squirrel in a Hawri scarf</h2>
-          <p>She came down from the oak trees holding the brightest bauble she could find, her Hawri scarf wrapped twice against the cold.</p>
+          <p>She came down from the oak trees with the brightest bauble she could find, dropped it once in the excitement, and picked it right back up. Her Hawri scarf stayed wrapped twice against the cold.</p>
           <p class="why"><strong>Why we chose it</strong>The Hawri is a Kurdish identity design, and we wanted it worn, not just displayed. On a playful forest animal the pattern feels friendly and close, like a scarf knitted by a grandmother.</p>
         </div>
       </div>
@@ -413,6 +423,23 @@ body{margin:0}
 
 <script>
 (function(){
+
+  // Squirrel video: plays when it scrolls into view, holds on her smile, replay on demand
+  var sv=document.getElementById('squirrelVid'), sr=document.getElementById('squirrelReplay');
+  if (sv) {
+    var played=false;
+    function playSv(){ sr.hidden=true; try { sv.currentTime=0; } catch(e){} var pr=sv.play(); if (pr && pr.catch) pr.catch(function(){ sr.hidden=false; }); }
+    sv.addEventListener('ended', function(){ sr.hidden=false; });
+    sr.addEventListener('click', playSv);
+    sv.addEventListener('click', playSv);
+    if (reduce || !('IntersectionObserver' in window)) { sr.hidden=false; }
+    else {
+      var vio=new IntersectionObserver(function(es){ es.forEach(function(e){
+        if (e.isIntersecting && e.intersectionRatio>0.55 && !played) { played=true; setTimeout(playSv, 350); }
+      }); }, { threshold:[0,0.55,0.8] });
+      vio.observe(sv);
+    }
+  }
   // Mockup lightbox
   var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap'), lastBtn=null;
   function closeLb(){ lb.classList.remove('open'); setTimeout(function(){ lb.hidden=true; }, 300); if (lastBtn) lastBtn.focus(); }
