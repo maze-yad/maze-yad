@@ -71,7 +71,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--berry);outline-offs
 .ku{font-family:var(--f-ku);font-weight:700;color:var(--berry);font-size:clamp(18px,3.2vw,26px);line-height:1.4}
 .hero h1{font-size:clamp(34px,7vw,68px);color:var(--pine)}
 .hero h1 em{font-style:normal;color:var(--berry)}
-.hero .sub{margin:10px auto 0;max-width:44ch;color:var(--ink-soft);font-size:18px}
+.hero .sub{margin:18px auto 0;max-width:44ch;color:var(--ink-soft);font-size:18px}
 .cue{margin-top:26px;display:inline-flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--pine);text-decoration:none}
 .cue span{width:2px;height:34px;background:linear-gradient(var(--pine),transparent);animation:drip 1.8s ease-in-out infinite}
 @keyframes drip{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(.2);transform-origin:bottom}}
@@ -249,6 +249,8 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 .social .tm{color:var(--ink)}
 @media (max-width:820px){.posts{grid-template-columns:minmax(0,420px);justify-content:center}.post{--rot:0deg!important}}
 
+.logo-label{margin:14px 0 0;display:flex;align-items:center;justify-content:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--berry)}
+.logo-label::before,.logo-label::after{content:"";width:34px;height:1px;background:currentColor;opacity:.5}
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -299,6 +301,7 @@ body{margin:0}
         <h1><img class="wordmark" src="img/wordmark.webp" alt="Christmas Nights by Sulifest"></h1>
       </div>
     </div>
+    <p class="logo-label"><span>Main logo</span></p>
     <p class="sub">This is Christmas as the whole world knows it, told in the accent of home. The familiar faces of the season sit beside the birds, woods, tea glasses and patterns that make winter here feel like ours. Scroll slowly and we'll tell you why each one made it in.</p>
     <div class="hero-credit"><small>Branding by</small><span class="maze-logo" role="img" aria-label="maze, creativity meets disruption"></span></div>
     <a class="cue" href="#friends">Scroll<span></span></a>
