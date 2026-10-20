@@ -127,6 +127,20 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 .credit img{width:min(320px,80vw);height:auto;opacity:.92;transition:opacity .3s}
 .credit a:hover img{opacity:1}
 
+
+/* maze trademark: one mask, tinted by each band's text colour */
+.maze-logo{display:block;background:currentColor;-webkit-mask:url(img/maze.webp) center/contain no-repeat;mask:url(img/maze.webp) center/contain no-repeat;aspect-ratio:900/135}
+.maze-mark{display:block;background:currentColor;-webkit-mask:url(img/maze-mark.webp) center/contain no-repeat;mask:url(img/maze-mark.webp) center/contain no-repeat;aspect-ratio:483/135}
+.hero-credit{margin:22px auto 0;display:flex;align-items:center;justify-content:center;gap:12px;color:var(--ink);flex-wrap:wrap}
+.hero-credit small{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-credit .maze-logo{width:min(230px,62vw)}
+.chapter,.wall,.close{position:relative}
+.tm{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:14px;display:flex;align-items:center;gap:6px;color:var(--text);opacity:.55;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;pointer-events:none}
+.tm .maze-mark{width:58px}
+.chapter:has(.on-light) .tm{color:var(--pine-deep)}
+.wall .tm{color:var(--ink)}
+.close .tm{color:var(--pine-deep)}
+
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -167,7 +181,8 @@ body{margin:0}
       </div>
     </div>
     <p class="ku" lang="ckb" dir="rtl" style="margin-top:18px">کریسمس پیرۆز</p>
-    <p class="sub">A winter walk through the mountains, from the stork's doorstep to a warm glass of tea. Scroll down and the season comes to you.</p>
+    <p class="sub">A winter walk through the mountains, from the stork's doorstep to a warm glass of tea. Our animal friends wear the Hawri, a Kurdish identity design. Scroll down and the season comes to you.</p>
+    <div class="hero-credit"><small>Branding by</small><span class="maze-logo" role="img" aria-label="maze, creativity meets disruption"></span></div>
     <a class="cue" href="#friends">Scroll<span></span></a>
   </section>
 
@@ -181,39 +196,47 @@ body{margin:0}
           <p>Rosy cheeks, a beard like fresh snow and a hat slipping to one side. The night is close.</p>
         </div>
       </div>
+    
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
     <section class="chapter flip" style="--band:#295542">
       <div class="wrap">
-        <div class="art" data-reveal="right"><img src="img/squirrel.jpg" alt="Red squirrel in a black embroidered scarf holding a red bauble" data-parallax></div>
+        <div class="art" data-reveal="right"><img src="img/squirrel.jpg" alt="Red squirrel in a black Hawri scarf holding a red bauble" data-parallax></div>
         <div class="copy" data-reveal="up">
           <span class="tag">From the oak woods</span>
           <h2>The squirrel brought a bauble</h2>
-          <p>Wrapped in a patterned scarf, with the brightest ornament from the forest held close.</p>
+          <p>Wrapped in a Hawri scarf, the Kurdish identity pattern, with the brightest ornament from the forest held close.</p>
         </div>
       </div>
+    
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
     <section class="chapter" style="--band:#d29738">
       <div class="wrap on-light">
-        <div class="art" data-reveal="left"><img src="img/horse.jpg" alt="Chestnut horse with holly in its mane, a scarf and a brass bell" data-parallax></div>
+        <div class="art" data-reveal="left"><img src="img/horse.jpg" alt="Chestnut horse with holly in its mane, a Hawri scarf and a brass bell" data-parallax></div>
         <div class="copy" data-reveal="up">
           <span class="tag">On the mountain road</span>
           <h2>A bell rings in the snow</h2>
-          <p>Holly tucked in the mane and a little brass bell at the neck. You hear her before you see her.</p>
+          <p>Holly in her mane, a Hawri scarf at her neck and a little brass bell. You hear her before you see her.</p>
         </div>
       </div>
+    
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
     <section class="chapter flip" style="--band:#c13f32">
       <div class="wrap">
-        <div class="art" data-reveal="right"><img src="img/stork.jpg" alt="White stork in a patterned scarf carrying a small gift in its beak" data-parallax></div>
+        <div class="art" data-reveal="right"><img src="img/stork.jpg" alt="White stork in a Hawri scarf carrying a small gift in its beak" data-parallax></div>
         <div class="copy" data-reveal="up">
           <span class="tag">Special delivery</span>
           <h2>The stork carries a gift home</h2>
-          <p>Standing on one leg, scarf tied tight, one small present held carefully for the right doorstep.</p>
+          <p>Standing on one leg with its Hawri scarf tied tight, one small present held carefully for the right doorstep.</p>
         </div>
       </div>
+    
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
     <section class="chapter" style="--band:#d89c37">
@@ -225,6 +248,8 @@ body{margin:0}
           <p>Striped flanks, a black necklace and bright red feet. The kew calls across the slopes all winter.</p>
         </div>
       </div>
+    
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
     <section class="chapter flip" style="--band:#c74233">
@@ -236,6 +261,8 @@ body{margin:0}
           <p>Strong, sweet and steaming in a slim glass. Every winter evening ends here.</p>
         </div>
       </div>
+    
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
   </div>
 
@@ -253,11 +280,13 @@ body{margin:0}
         <figure class="tile" data-reveal="pop" style="--d:.24s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the deer"><img src="img/deer.jpg" alt="Young spotted deer with small antlers" loading="lazy"></div><figcaption><b>The deer</b>Spots on its back</figcaption></figure>
         <figure class="tile" data-reveal="pop" style="--d:0s;--tilt:3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the tree"><img src="img/tree.jpg" alt="Christmas tree with baubles and a gold star" loading="lazy"></div><figcaption><b>The tree</b>Gold star on top</figcaption></figure>
         <figure class="tile" data-reveal="pop" style="--d:.08s;--tilt:-3deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the oak sprig"><img src="img/oak.jpg" alt="Oak leaves and two acorns tied with a red bow" loading="lazy"></div><figcaption><b>Oak and acorns</b>From the mountain woods</figcaption></figure>
-        <figure class="tile" data-reveal="pop" style="--d:.16s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the felt vest"><img src="img/vest.jpg" alt="Brown felt vest with black trim and pointed shoulders" loading="lazy"></div><figcaption><b>Felt vest</b>Warm for winter</figcaption></figure>
+        <figure class="tile" data-reveal="pop" style="--d:.16s;--tilt:2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the Kulabal"><img src="img/vest.jpg" alt="Kulabal, a brown felt vest with black trim and pointed shoulders" loading="lazy"></div><figcaption><b>Kulabal</b>Warm for winter</figcaption></figure>
         <figure class="tile" data-reveal="pop" style="--d:.24s;--tilt:-2deg"><div class="pic" tabindex="0" role="button" aria-label="Jingle the stocking"><img src="img/stocking.jpg" alt="Red stocking with white paisley pattern" loading="lazy"></div><figcaption><b>Stocking</b>Hung by the fire</figcaption></figure>
       </div>
     </div>
-  </section>
+  
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
+    </section>
 
   <section class="close" id="greetings">
     <div class="wrap">
@@ -269,13 +298,15 @@ body{margin:0}
         <a class="btn" href="#top">Back to the wreath ↑</a>
       </div>
     </div>
-  </section>
+  
+      <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
+    </section>
 </main>
 
 <footer>
   <div class="wrap credit" data-reveal="up">
     <span class="tag">Branding and design by</span>
-    <img src="img/maze.webp" alt="maze, creativity meets disruption" loading="lazy">
+    <span class="maze-logo" role="img" aria-label="maze, creativity meets disruption" style="width:min(320px,80vw);color:var(--snow)"></span>
   </div>
   <div class="wrap"><span>Christmas Nights by Sulifest</span><span><span id="year">Christmas 2026</span> · Branding by maze</span></div>
 </footer>
