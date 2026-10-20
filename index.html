@@ -34,6 +34,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{background:var(--snow);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
 img{max-width:100%;display:block}
@@ -166,6 +167,38 @@ footer .wrap{padding-block:22px;display:flex;justify-content:space-between;flex-
 .tile .light-pic{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--pine) 14%,transparent)}
 .tile .logo-pic{background:#fbf6ec;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--pine) 14%,transparent)}
 .tile .logo-pic img{object-fit:contain;padding:12%}
+
+/* mockups: the identity in the world */
+.mockups{background:var(--pine-deep);color:var(--snow);position:relative;overflow:hidden}
+.mockups > .wrap{padding-block:clamp(56px,8vw,110px)}
+.mock-head{display:grid;gap:12px;text-align:center;margin-bottom:clamp(32px,5vw,56px)}
+.mock-head .tag{color:var(--mustard)}
+.mock-head h2{font-size:clamp(34px,5vw,56px)}
+.mock-head p{max-width:52ch;margin-inline:auto;color:color-mix(in srgb,var(--snow) 78%,transparent)}
+.mock-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(150px,19vw,250px);gap:clamp(10px,1.6vw,18px)}
+.mock{position:relative;margin:0;border-radius:8px;overflow:hidden;background:var(--pine);min-width:0}
+.mock.wide{grid-column:span 2}
+.mock.tall{grid-row:span 2}
+.mock button{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+.mock button:focus-visible{outline:3px solid var(--mustard);outline-offset:-3px}
+.mock img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.mock:hover img{transform:scale(1.05)}
+.mock figcaption{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:6px;background:color-mix(in srgb,var(--pine-deep) 82%,transparent);backdrop-filter:blur(6px);pointer-events:none;max-width:max-content}
+.mock figcaption b{font-family:var(--f-display);font-weight:400;font-size:19px;line-height:1.2}
+.mock figcaption span{font-size:13px;line-height:1.4;color:color-mix(in srgb,var(--snow) 80%,transparent)}
+.mockups .tm{color:var(--snow)}
+@media (max-width:760px){
+  .mock-grid{grid-template-columns:1fr;grid-auto-rows:auto}
+  .mock.wide,.mock.tall{grid-column:auto;grid-row:auto}
+  .mock img{height:auto;aspect-ratio:var(--ar)}
+  .mockups > .wrap{padding-bottom:72px}
+}
+.lightbox{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:color-mix(in srgb,#0d1f17 92%,transparent);opacity:0;transition:opacity .35s}
+.lightbox.open{opacity:1}
+.lightbox img{max-width:min(1200px,100%);max-height:84vh;width:auto;height:auto;border-radius:8px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.lightbox p{color:var(--snow);text-align:center;margin-top:12px;font-size:15px}
+.lightbox .x{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--snow);color:var(--pine-deep);font-size:22px;line-height:1;cursor:pointer}
+
 /* scroll reveal: only elements below the fold at load start hidden */
 .pending[data-reveal]{opacity:0}
 .pending[data-reveal="left"]{transform:translateX(-70px) rotate(-4deg)}
@@ -191,6 +224,7 @@ body{margin:0}
     <nav aria-label="Sections">
       <a href="#friends">Friends</a>
       <a href="#ornaments">Ornaments</a>
+      <a href="#mockups">Mockups</a>
       <a href="#greetings">Greetings</a>
     </nav>
     <span class="count" id="count" aria-live="polite">65 days to Christmas</span>
@@ -334,6 +368,25 @@ body{margin:0}
       <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
     </section>
 
+  <section class="mockups" id="mockups">
+    <div class="wrap">
+      <div class="mock-head" data-reveal="up">
+        <span class="tag">The identity in the world</span>
+        <h2>From a screen to the streets</h2>
+        <p>We built the wreath to work at every size, as big as a building and as small as a coaster. The same colours and icons carry across tickets, merch and staff passes, so Christmas Nights is recognisable wherever you meet it. Tap any photo to see it larger.</p>
+      </div>
+      <div class="mock-grid">
+        <figure class="mock wide tall" data-reveal="up" style="--d:0.00s;--ar:1600/1289"><button type="button" aria-label="View larger: On the city walls"><img src="img/mock-projection.webp" alt="The wreath and wordmark projected onto an old stone building above a crowd at night" loading="lazy"></button><figcaption><b>On the city walls</b><span>Projected as big as a building, the wreath still reads at a glance.</span></figcaption></figure>
+        <figure class="mock tall" data-reveal="up" style="--d:0.12s;--ar:896/1120"><button type="button" aria-label="View larger: Mugs"><img src="img/mock-mug.webp" alt="Cream mug printed with the wreath next to a green mug, walnuts and dried oranges" loading="lazy"></button><figcaption><b>Mugs</b><span>Made for long evenings and one more glass of tea.</span></figcaption></figure>
+        <figure class="mock tall" data-reveal="up" style="--d:0.00s;--ar:896/1120"><button type="button" aria-label="View larger: Tickets and coasters"><img src="img/mock-ticket.webp" alt="Hand holding a Christmas Nights ticket and a round coaster at a lit market" loading="lazy"></button><figcaption><b>Tickets and coasters</b><span>Christmas Nights · Slemani, from the gate to the table.</span></figcaption></figure>
+        <figure class="mock wide tall" data-reveal="up" style="--d:0.12s;--ar:1600/1289"><button type="button" aria-label="View larger: Tote bag at the market"><img src="img/mock-market.webp" alt="Woman at a snowy Christmas market carrying a tote bag with the wreath and wordmark" loading="lazy"></button><figcaption><b>Tote bag at the market</b><span>The wreath walks around the market with every visitor.</span></figcaption></figure>
+        <figure class="mock tall" data-reveal="up" style="--d:0.00s;--ar:896/1120"><button type="button" aria-label="View larger: Tote bag"><img src="img/mock-tote.webp" alt="Canvas tote bag with the wreath hanging on a wall beside a glass of tea" loading="lazy"></button><figcaption><b>Tote bag</b><span>Hung by the window next to a glass of tea.</span></figcaption></figure>
+        <figure class="mock wide tall" data-reveal="up" style="--d:0.12s;--ar:1600/1289"><button type="button" aria-label="View larger: Staff pass"><img src="img/mock-badge.webp" alt="Man at a Christmas market wearing a lanyard badge with the wreath" loading="lazy"></button><figcaption><b>Staff pass</b><span>The same wreath on every badge, so the team is easy to find.</span></figcaption></figure>
+      </div>
+    </div>
+    <span class="tm" aria-hidden="true">Design by<span class="maze-mark"></span></span>
+  </section>
+
   <section class="close" id="greetings">
     <div class="wrap">
       <img src="img/kew2.jpg" alt="Partridge standing on a mustard background" data-reveal="pop" style="--tilt:-8deg" loading="lazy">
@@ -356,8 +409,23 @@ body{margin:0}
   <div class="wrap"><span>Christmas Nights by Sulifest</span><span><span id="year">Christmas 2026</span> · Branding by maze</span></div>
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Mockup photo" hidden><button class="x" type="button" aria-label="Close">×</button><figure style="margin:0"><img id="lbImg" alt=""><p id="lbCap"></p></figure></div>
+
 <script>
 (function(){
+  // Mockup lightbox
+  var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap'), lastBtn=null;
+  function closeLb(){ lb.classList.remove('open'); setTimeout(function(){ lb.hidden=true; }, 300); if (lastBtn) lastBtn.focus(); }
+  document.querySelectorAll('.mock button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var img=b.querySelector('img'), fig=b.parentElement;
+      lbImg.src=img.src; lbImg.alt=img.alt; lbCap.textContent=fig.querySelector('b').textContent+' · '+fig.querySelector('figcaption span').textContent;
+      lastBtn=b; lb.hidden=false; requestAnimationFrame(function(){ lb.classList.add('open'); }); lb.querySelector('.x').focus();
+    });
+  });
+  lb.addEventListener('click', function(e){ if (e.target===lb || e.target.classList.contains('x')) closeLb(); });
+  document.addEventListener('keydown', function(e){ if (e.key==='Escape' && !lb.hidden) closeLb(); });
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Countdown to Christmas
